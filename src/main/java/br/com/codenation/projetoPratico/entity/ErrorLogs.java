@@ -4,6 +4,8 @@ package br.com.codenation.projetoPratico.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,40 +24,47 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 @EntityListeners(AuditingEntityListener.class)
-@EqualsAndHashCode(of = "id")
-@Table(name = "errorlogs")
+//@Table(name = "errorlogs")
 public class ErrorLogs {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(View.Public.class)
     private Long id;
 
     @Column
     @NotNull
     @Size(max = 100)
+    @JsonView(View.Public.class)
     private String level;
 
     @Column
     @Email
     @Size(max = 100)
     @NotNull
+    @JsonView(View.Public.class)
     private String description;
 
     @Column
     @NotNull
+    @JsonIgnore
+    @JsonView(View.Internal.class)
     private String log;
 
     @Column
     @NotNull
     @Size(max = 255)
+    @JsonView(View.Public.class)
     private String origin;
 
     @Column
     @CreatedDate
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonView(View.Public.class)
     private LocalDateTime createdAt;
 
     @Column
-    private Integer quantity;
+    @JsonView(View.Public.class)
+    private Long quantity;
 
 }
