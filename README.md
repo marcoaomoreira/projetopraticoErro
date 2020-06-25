@@ -29,7 +29,7 @@ O acesso a ela deve ser permitido apenas por requisições que utilizem um token
  - A consulta de listagem não deve retornar os LOGs dos Eventos
  - Deve permitir a busca de um evento por um ID, dessa maneira exibindo o LOG desse evento em específico
  
- ## API
+ ## OBSERVAÇÕES
  
  O link da API é o: projetocentraldeerros.herokuapp.com/. 
  Para teste da aplicação, foi inserido um arquivo em Python codefortest.py, onde são feitas algumas requisições e exemplos de funcionamento da aplicação.
